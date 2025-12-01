@@ -1,6 +1,6 @@
 # Prova S206 - Teste de UI com Cypress e Teste de API com Postman
 Repositório destinado à Prova - Teste de UI com cypress e Teste de API com Postman - da disciplina S206 - Qualidade de Software.  
-O objetivo principal é o desenvolvimento de testes de UI para o website [XYZ Bank](https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login) e de API para [API Graph-QL](https://gorest.co.in/)-->.
+O objetivo principal é o desenvolvimento de testes de UI para o website [XYZ Bank](https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login) e de API para [API Graph-QL](https://gorest.co.in/).
 
 ## :pencil: Descrição
 Foram desenvolvidos testes de UI no [XYZ Bank](https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login) para gerência do banco, testando a adição de cliente e a abertura de conta utilizando a ferramenta `Cypress` e o `Mochawesome` para a geração de relatório.
@@ -74,6 +74,7 @@ Dessa forma, são realizados 4 testes de UI, sendo 2 positivos e 2 negativos.
 | 5 | **Get-posts** | Positivo | Realiza a busca de todos os posts de forma válida. |
 | 6 | **Get-post** | Positivo | Realiza a busca de um post de forma válida. |
 | 7 | **Get-unexisting-post** | Positivo | Realiza a busca de um post inexistente. |
+
 Dessa forma, são realizados 7 testes de API, sendo 5 positivos e 2 negativos.
 
 
