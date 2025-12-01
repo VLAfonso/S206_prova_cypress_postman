@@ -78,10 +78,12 @@ Dessa forma, são realizados 7 testes de API, sendo 5 positivos e 2 negativos.
 
 
 ### Relatórios de testes
-O relatório de testes de UI é gerado automaticamente em formato HTML pelo `Mochawesome` e está presente em [`cypress/cypress/reports/html`](./cypress/cypress/reports/html). Seu resultado pode ser visto a seguir:  
-<!-- Adicionar imagem do relatório -->
+O relatório de testes de UI é gerado automaticamente em formato HTML pelo `Mochawesome` e está presente em [`cypress/cypress/reports/html`](./cypress/cypress/reports/html). Seu resultado pode ser visto a seguir: <img width="1911" height="455" alt="image" src="https://github.com/user-attachments/assets/59e66baa-9cf2-4062-8daf-aae584a5fd57" />
+ 
+
 O relatório de testes API é gerado em formato HTML pelo `Newman` e está presente na pasta [`postamn/newman`](./postman/newman). Seu resultado pode ser visto a seguir:  
-<!-- Adicionar imagem do relatório -->
+<img width="698" height="699" alt="image" src="https://github.com/user-attachments/assets/15a1c5e2-5e6a-4e7f-861c-b908fcafd7f0" />
+
 
 ## :hammer_and_wrench: Tecnologias e Ferramentas Utilizadas
 - Linguagem de Programação: **JavaScript**
