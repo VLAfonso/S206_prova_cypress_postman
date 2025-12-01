@@ -8,6 +8,45 @@
 	},
 	"item": [
 		{
+			"name": "Get-users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    let data = pm.response.json();\r",
+							"    pm.collectionVariables.set(\"user_id\", data[0].id);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Deletion-unauthorized",
 			"event": [
 				{
@@ -15,7 +54,10 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Valid request\", function () {\r",
-							"    pm.response.to.have.status(404) || pm.response.to.have.status(401);\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Authentication failed\");\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -28,7 +70,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://gorest.co.in/public/v2/users/8260123",
+					"raw": "https://gorest.co.in/public/v2/users/{{user_id}}",
 					"protocol": "https",
 					"host": [
 						"gorest",
@@ -39,7 +81,7 @@
 						"public",
 						"v2",
 						"users",
-						"8260123"
+						"{{user_id}}"
 					]
 				}
 			},
@@ -54,6 +96,9 @@
 						"exec": [
 							"pm.test(\"Status code is 404\", function () {\r",
 							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Resource not found\");\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -91,7 +136,52 @@
 					"script": {
 						"exec": [
 							"pm.test(\"Valid request\", function () {\r",
-							"    pm.response.to.have.status(200) || pm.response.to.have.status(404);\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    let id = pm.collectionVariables.get(\"user_id\");\r",
+							"    pm.expect(pm.response.text()).to.include(id);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users/{{user_id}}",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-posts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    let data = pm.response.json();\r",
+							"    pm.collectionVariables.set(\"post_id\", data[0].id);\r",
 							"});"
 						],
 						"type": "text/javascript",
@@ -104,7 +194,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://gorest.co.in/public/v2/users/8260072",
+					"raw": "https://gorest.co.in/public/v2/posts",
 					"protocol": "https",
 					"host": [
 						"gorest",
@@ -114,12 +204,104 @@
 					"path": [
 						"public",
 						"v2",
-						"users",
-						"8260072"
+						"posts"
 					]
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Get-post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    let id = pm.collectionVariables.get(\"post_id\");\r",
+							"    pm.expect(pm.response.text()).to.include(id);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/posts/{{post_id}}",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"posts",
+						"{{post_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-unexisting-post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Resource not found\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/posts/{{post_id}}0909",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"posts",
+						"{{post_id}}0909"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "post_id",
+			"value": ""
+		},
+		{
+			"key": "user_id",
+			"value": ""
 		}
 	]
 }
