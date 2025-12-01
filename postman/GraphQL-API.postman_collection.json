@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "efd98643-c2b9-48e9-8deb-c33f6bd4d27c",
+		"name": "GraphQL-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49959244",
+		"_collection_link": "https://lannaces-7162060.postman.co/workspace/Lanna-Correia's-Workspace~cd22ab17-0e26-4833-8571-0b9c36209c02/collection/49959244-efd98643-c2b9-48e9-8deb-c33f6bd4d27c?action=share&source=collection_link&creator=49959244"
+	},
+	"item": [
+		{
+			"name": "Deletion-unauthorized",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Valid request\", function () {\r",
+							"    pm.response.to.have.status(404) || pm.response.to.have.status(401);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users/8260123",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"8260123"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-unexisting-user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users/7000",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"7000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Valid request\", function () {\r",
+							"    pm.response.to.have.status(200) || pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users/8260072",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"8260072"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
